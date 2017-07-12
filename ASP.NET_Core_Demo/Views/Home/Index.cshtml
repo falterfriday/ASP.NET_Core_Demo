@@ -1,0 +1,30 @@
+﻿@model ASP.NET_Core_Demo.ViewModels.HomePageViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index.cshtml</title>
+</head>
+<body style="text-align:center">
+    <h1>The server is running...</h1>
+    <h2>You should probably catch it!</h2>
+    <hr />
+    <h2>@Model.CurrentMessage</h2>
+    <h2>Table</h2>
+    
+    <table>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            @if (restaurant.Id >= 0)
+            {
+                <tr>
+                    <td>@restaurant.Name</td>
+                    <td>
+                        <a href="/home/details/@restaurant.Id">Details</a>
+                        @Html.ActionLink("View", "Details", new { id = restaurant.Id})
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

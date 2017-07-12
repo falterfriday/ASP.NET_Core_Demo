@@ -1,0 +1,18 @@
+﻿@model ASP.NET_Core_Demo.Entities.Restaurant
+@using ASP.NET_Core_Demo.Controllers
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    <div>
+        Id: @Model.Id
+    </div>
+    <div>
+        Cuisine: @Model.Cuisine
+    </div>
+    @*<div>@Html.ActionLink("Home", "Index")</div>*@
+    <div>@Html.ActionLink("Home", nameof(HomeController.Index))</div>
+</body>
+</html>
