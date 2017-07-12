@@ -49,6 +49,7 @@ namespace ASP.NET_Core_Demo.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(RestaurantEditViewModel model)
         {
             if (ModelState.IsValid)
