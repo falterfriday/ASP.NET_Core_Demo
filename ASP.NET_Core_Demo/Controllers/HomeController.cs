@@ -1,9 +1,9 @@
-﻿using ASP.NET_Core_Demo.Entities;
-using ASP.NET_Core_Demo.Services;
-using ASP.NET_Core_Demo.ViewModels;
+﻿using AspNetCoreDemo.Entities;
+using AspNetCoreDemo.Services;
+using AspNetCoreDemo.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASP.NET_Core_Demo.Controllers
+namespace AspNetCoreDemo.Controllers
 {
     public class HomeController : Controller
     {

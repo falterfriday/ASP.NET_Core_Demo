@@ -1,7 +1,7 @@
-﻿using ASP.NET_Core_Demo.Entities;
+﻿using AspNetCoreDemo.Entities;
 using System.Collections.Generic;
 
-namespace ASP.NET_Core_Demo.ViewModels
+namespace AspNetCoreDemo.ViewModels
 {
     public class HomePageViewModel
     {

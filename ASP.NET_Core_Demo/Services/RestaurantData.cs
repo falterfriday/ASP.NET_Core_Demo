@@ -1,16 +1,41 @@
-﻿using ASP.NET_Core_Demo.Entities;
-using System;
+﻿using AspNetCoreDemo.Entities;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace ASP.NET_Core_Demo.Services
+namespace AspNetCoreDemo.Services
 {
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> GetAll();
         Restaurant Get(int id);
         Restaurant Add(Restaurant newRestaurant);
+    }
+
+    public class SqlRestaurantData : IRestaurantData
+    {
+        private AspNetCoreDemoDbContext _context;
+
+        public SqlRestaurantData(AspNetCoreDemoDbContext context)
+        {
+            _context = context;
+        }
+
+        public Restaurant Add(Restaurant newRestaurant)
+        {
+            _context.Add(newRestaurant);
+            _context.SaveChanges();
+            return newRestaurant;
+        }
+
+        public Restaurant Get(int id)
+        {
+            return _context.Restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
+        public IEnumerable<Restaurant> GetAll()
+        {
+            return _context.Restaurants;
+        }
     }
 
     public class InMemoryRestaurantData : IRestaurantData

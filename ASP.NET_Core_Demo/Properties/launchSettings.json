@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ASP.NET_Core_Demo": {
+    "AspNetCoreDemo": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

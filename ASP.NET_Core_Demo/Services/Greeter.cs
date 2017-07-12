@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ASP.NET_Core_Demo.Services
+namespace AspNetCoreDemo.Services
 {
     public interface IGreeter
     {

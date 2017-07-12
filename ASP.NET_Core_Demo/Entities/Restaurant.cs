@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ASP.NET_Core_Demo.Entities
+namespace AspNetCoreDemo.Entities
 
 {
     public class Restaurant

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Routing;
-using ASP.NET_Core_Demo.Services;
+using AspNetCoreDemo.Services;
+using AspNetCoreDemo.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace ASP.NET_Core_Demo
+namespace AspNetCoreDemo
 {
     public class Startup
     {
@@ -38,7 +36,9 @@ namespace ASP.NET_Core_Demo
             services.AddSingleton<IGreeter, Greeter>();
             services.AddSingleton(Configuration);
             services.AddMvc();
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
+            services.AddDbContext<AspNetCoreDemoDbContext>(options => 
+                    options.UseSqlServer(Configuration.GetConnectionString("AspNetCoreDemo")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
