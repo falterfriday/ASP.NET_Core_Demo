@@ -51,6 +51,8 @@ namespace ASP.NET_Core_Demo.Controllers
         [HttpPost]
         public IActionResult Create(RestaurantEditViewModel model)
         {
+            if (ModelState.IsValid)
+            {
             var newRestaurant = new Restaurant();
             newRestaurant.Name = model.Name;
             newRestaurant.Cuisine = model.Cuisine;
@@ -60,6 +62,12 @@ namespace ASP.NET_Core_Demo.Controllers
 
             //return View("Details", newRestaurant);
             return RedirectToAction("Details", new { id = newRestaurant.Id });
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
 
