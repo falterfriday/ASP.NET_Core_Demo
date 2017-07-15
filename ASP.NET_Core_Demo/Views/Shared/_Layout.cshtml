@@ -12,6 +12,7 @@
     <footer style="text-align:center">
         <hr />
         @RenderSection("footer", required: false)
+        @Component.InvokeAsync("Greeting")
         @DateTime.Now
     </footer>
 </body>

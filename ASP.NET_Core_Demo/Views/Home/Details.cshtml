@@ -19,7 +19,7 @@
     @*<div>@Html.ActionLink("Home", "Index")</div>*@
     <div>
         @Html.ActionLink("Home", nameof(HomeController.Index))
-        <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id" >Edit</a>
     </div>
 </body>
 </html>
