@@ -1,5 +1,9 @@
 ﻿@model AspNetCoreDemo.Entities.Restaurant
 @using AspNetCoreDemo.Controllers
+
+@{ 
+    ViewBag.Title = Model.Name + " Details";
+}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -13,6 +17,9 @@
         Cuisine: @Model.Cuisine
     </div>
     @*<div>@Html.ActionLink("Home", "Index")</div>*@
-    <div>@Html.ActionLink("Home", nameof(HomeController.Index))</div>
+    <div>
+        @Html.ActionLink("Home", nameof(HomeController.Index))
+        <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    </div>
 </body>
 </html>

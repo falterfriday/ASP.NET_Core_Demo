@@ -43,6 +43,32 @@ namespace AspNetCoreDemo.Controllers
         }
 
         [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var model = _restaurantData.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, RestaurantEditViewModel model)
+        {
+            var restaurant = _restaurantData.Get(id);
+            if (ModelState.IsValid)
+            {
+                restaurant.Cuisine = model.Cuisine;
+                restaurant.Name = model.Name;
+                _restaurantData.Commit();
+                return RedirectToAction("Details", new { id = restaurant.Id });
+            }
+            return View(restaurant);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -54,15 +80,16 @@ namespace AspNetCoreDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-            var newRestaurant = new Restaurant();
-            newRestaurant.Name = model.Name;
-            newRestaurant.Cuisine = model.Cuisine;
+                var newRestaurant = new Restaurant();
+                newRestaurant.Name = model.Name;
+                newRestaurant.Cuisine = model.Cuisine;
 
-            _restaurantData.Add(newRestaurant);
+                _restaurantData.Add(newRestaurant);
+                _restaurantData.Commit();
 
 
-            //return View("Details", newRestaurant);
-            return RedirectToAction("Details", new { id = newRestaurant.Id });
+                //return View("Details", newRestaurant);
+                return RedirectToAction("Details", new { id = newRestaurant.Id });
             }
             else
             {
@@ -81,4 +108,3 @@ namespace AspNetCoreDemo.Controllers
         //}
     }
 }
- 

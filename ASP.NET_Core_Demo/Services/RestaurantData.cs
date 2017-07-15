@@ -1,6 +1,7 @@
 ﻿using AspNetCoreDemo.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace AspNetCoreDemo.Services
 {
@@ -9,6 +10,7 @@ namespace AspNetCoreDemo.Services
         IEnumerable<Restaurant> GetAll();
         Restaurant Get(int id);
         Restaurant Add(Restaurant newRestaurant);
+        void Commit();
     }
 
     public class SqlRestaurantData : IRestaurantData
@@ -25,6 +27,11 @@ namespace AspNetCoreDemo.Services
             _context.Add(newRestaurant);
             _context.SaveChanges();
             return newRestaurant;
+        }
+
+        public void Commit()
+        {
+            _context.SaveChanges();
         }
 
         public Restaurant Get(int id)
@@ -65,6 +72,11 @@ namespace AspNetCoreDemo.Services
             newRestaurant.Id = _restaurants.Max(r => r.Id) + 1;
             _restaurants.Add(newRestaurant);
             return newRestaurant;
+        }
+
+        public void Commit()
+        {
+            //... no operational
         }
 
         static List<Restaurant> _restaurants;
