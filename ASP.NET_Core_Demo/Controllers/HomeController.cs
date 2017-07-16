@@ -98,7 +98,6 @@ namespace AspNetCoreDemo.Controllers
 
         }
 
-
         private IRestaurantData _restaurantData;
         private IGreeter _greeter;
 
