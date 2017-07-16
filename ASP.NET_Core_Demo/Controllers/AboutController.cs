@@ -8,7 +8,6 @@ namespace AspNetCoreDemo.Controllers
     [Route("[controller]/[action]")]
     public class AboutController
     {
-
         public string Phone()
         {
             return "(555)555-5555";
