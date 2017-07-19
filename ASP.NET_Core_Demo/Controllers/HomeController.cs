@@ -1,10 +1,12 @@
 ﻿using AspNetCoreDemo.Entities;
 using AspNetCoreDemo.Services;
 using AspNetCoreDemo.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreDemo.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
 
@@ -14,6 +16,7 @@ namespace AspNetCoreDemo.Controllers
             _greeter = greeter;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var model = new HomePageViewModel();

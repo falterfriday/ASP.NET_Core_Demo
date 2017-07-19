@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using AspNetCoreDemo.Services;
 using AspNetCoreDemo.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AspNetCoreDemo
 {
@@ -39,6 +40,8 @@ namespace AspNetCoreDemo
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
             services.AddDbContext<AspNetCoreDemoDbContext>(options => 
                     options.UseSqlServer(Configuration.GetConnectionString("AspNetCoreDemo")));
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<AspNetCoreDemoDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +72,7 @@ namespace AspNetCoreDemo
 
             app.UseFileServer();
 
+            app.UseIdentity();
 
             app.UseMvc(ConfigureRoutes);
 

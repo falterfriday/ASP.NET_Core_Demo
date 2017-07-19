@@ -8,9 +8,10 @@ using AspNetCoreDemo.Entities;
 namespace AspNetCoreDemo.Migrations
 {
     [DbContext(typeof(AspNetCoreDemoDbContext))]
-    partial class AspNetCoreDemoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170719001819_Identity")]
+    partial class Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
