@@ -23,9 +23,7 @@ namespace AspNetCoreDemo
             
         }
 
-
         public IConfiguration Configuration { get; set; }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -75,7 +73,6 @@ namespace AspNetCoreDemo
             app.UseIdentity();
 
             app.UseMvc(ConfigureRoutes);
-
 
             app.Run(ctx => ctx.Response.WriteAsync("Not Found"));
 

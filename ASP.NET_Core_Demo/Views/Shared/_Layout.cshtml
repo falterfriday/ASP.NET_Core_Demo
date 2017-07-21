@@ -6,6 +6,10 @@
 </head>
 <body>
     <div>
+        @await Component.InvokeAsync("LoginLogout")
+    </div>
+    <hr />
+    <div>
         @RenderBody()
     </div>
     <footer style="text-align:center">
