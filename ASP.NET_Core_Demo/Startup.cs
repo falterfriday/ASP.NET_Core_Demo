@@ -56,25 +56,27 @@ namespace AspNetCoreDemo
             // UseDeveloperExceptionPage needs to come/be installed before other pieces of middleware
             // otherwise it won't be initiated
             // req/res cycle won't hit it
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler(new ExceptionHandlerOptions
-                {
-                    ExceptionHandler = context => context.Response.WriteAsync("Opps!")
-                });
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler(new ExceptionHandlerOptions
+            //    {
+            //        ExceptionHandler = context => context.Response.WriteAsync("Opps!")
+            //    });
+            //}
 
             app.UseFileServer();
+
+            app.UseNodeModules(env.ContentRootPath);
 
             app.UseIdentity();
 
             app.UseMvc(ConfigureRoutes);
 
-            app.Run(ctx => ctx.Response.WriteAsync("Not Found"));
+            //app.Run(ctx => ctx.Response.WriteAsync("Not Found"));
 
             // will use default files in the webroot
             // index.html is a automaticall configured as default file name

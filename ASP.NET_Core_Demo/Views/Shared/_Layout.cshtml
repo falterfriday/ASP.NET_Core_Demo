@@ -3,20 +3,30 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" >
 </head>
 <body>
-    <div>
-        @await Component.InvokeAsync("LoginLogout")
-    </div>
-    <hr />
-    <div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">AspNetCoreDemo</a>
+            </div>
+            <div class="navbar-right">
+                @await Component.InvokeAsync("LoginLogout")
+            </div>
+        </div>
+    </nav>
+    <div class="container">
         @RenderBody()
+        <footer style="text-align:center">
+            <hr />
+            @RenderSection("footer", required: false)
+            @await Component.InvokeAsync("Greeting")
+            @DateTime.Now
+        </footer>
     </div>
-    <footer style="text-align:center">
-        <hr />
-        @RenderSection("footer", required: false)
-        @await Component.InvokeAsync("Greeting")
-        @DateTime.Now
-    </footer>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>

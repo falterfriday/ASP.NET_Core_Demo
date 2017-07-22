@@ -16,36 +16,8 @@
     @Html.Partial("_Summary", restaurant)
 }
 
-
 <hr />
-@*<h2>Table 2</h2>
-    <table>
-        @foreach (var restaurant in Model.Restaurants)
-        {
-            @if (restaurant.Id >= 0)
-            {
-                <tr>
-                    <td>@restaurant.Name</td>
-                    <td>
-                        @*<a href="/home/details/@restaurant.Id">Details</a>*@
 
-@*<a asp-action="Details" asp-route-id="@restaurant.Id">Details</a>*@
-
-@*@Html.ActionLink("View", "Details", new { id = restaurant.Id })*@
-                @*</td>
-    @*<td>
-            <a asp-action="Edit" asp-route-id="@restaurant.Id">Edit</a>
-        </td>
-                    </tr>
-                }
-            }
-        </table>*@
-
-@*if on the same controller - omit asp-controller*@
 <div>
-    <a asp-controller="Home" asp-action="Create">Add Restaurant</a>
+    <a class="btn btn-success" asp-controller="Home" asp-action="Create">Add Restaurant</a>
 </div>
-
-@*@section footer {
-    <h2>@Model.CurrentMessage</h2>
-}*@
