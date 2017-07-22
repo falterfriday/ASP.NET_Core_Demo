@@ -23,15 +23,6 @@ namespace AspNetCoreDemo.Controllers
             model.Restaurants = _restaurantData.GetAll();
             model.CurrentMessage = _greeter.GetGreeting();
 
-            //var model = _restaurantData.GetAll();
-
-            //var model = new Restaurant { Id = 1, Name = "House of Food" };
-
-            //return Content("This is from the IAction method/action");
-
-            //serializes response into json and returns back to view
-            //return new ObjectResult(model);
-
             return View(model);
         }
 
