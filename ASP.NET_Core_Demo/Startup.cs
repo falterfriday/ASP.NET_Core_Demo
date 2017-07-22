@@ -51,22 +51,22 @@ namespace AspNetCoreDemo
                                 IGreeter greeter)
         {
             loggerFactory.AddConsole();
-            
-            
+
+
             // UseDeveloperExceptionPage needs to come/be installed before other pieces of middleware
             // otherwise it won't be initiated
             // req/res cycle won't hit it
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler(new ExceptionHandlerOptions
-            //    {
-            //        ExceptionHandler = context => context.Response.WriteAsync("Opps!")
-            //    });
-            //}
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler(new ExceptionHandlerOptions
+                {
+                    ExceptionHandler = context => context.Response.WriteAsync("Opps!")
+                });
+            }
 
             app.UseFileServer();
 

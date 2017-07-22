@@ -3,7 +3,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" >
+    <environment names="Development">
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    </environment>
+    <environment names="Staging, Production">
+        <link href="http://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"
+              asp-fallback-href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    </environment>
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -25,8 +31,24 @@
             @DateTime.Now
         </footer>
     </div>
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="/node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <environment names="Development">
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="/node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment names="Staging, Production">
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"
+                asp-fallback-src="/node_modules/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.JQuery">
+        </script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"
+                asp-fallback-src="/node_modules/jquery-validation/dist/jquery.validate.min.js"
+                asp-fallback-test="window.JQuery && JQuery.validator">
+        </script>
+        <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"
+                asp-fallback-src="/node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+                asp-fallback-test="window.JQuery && JQuery.validator && JQuery.validator.">
+        </script>
+    </environment>
 </body>
 </html>
